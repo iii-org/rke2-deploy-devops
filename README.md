@@ -8,6 +8,10 @@ systemctl start rke2-server.service
 # Wait a bit
 export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
 kubectl get nodes
+# for k8s self-cert or http01 dns method
+kubectl create ns cert-manager
+# create ns for manage install easy
+kubectl create ns devops
 ```
 
 ## Install helm and list
@@ -22,8 +26,6 @@ helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm repo add bitnami https://charts.bitnami.com/bitnami
 # harbor
 helm repo add harbor https://helm.goharbor.io
-# create ns for manage install easy
-kubectl create ns devops
 ```
 
 ## (選擇性, 可選擇任何的公私有雲的儲存空間) Install NFS
