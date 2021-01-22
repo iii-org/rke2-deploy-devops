@@ -28,8 +28,8 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add harbor https://helm.goharbor.io
 ```
 
-## (選擇性, 可選擇任何的公私有雲的儲存空間) Install NFS
-```
+## (選擇性, 可選擇任何的公私有雲的儲存空間) Install NFS and storageclass for iiidevops
+```sh
 apt install nfs-kernel-server -y
 mkdir /var/iiidevopsNFS
 chmod -R 777 /var/iiidevopsNFS
@@ -39,9 +39,13 @@ showmount -e 10.20.0.68
 ```
 
 ## Install cert-manager as Share Service
-```
+```sh
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4
+```
+## Install rancher
+```sh
+helm install rancher rancher-stable/rancher -n devops --set hostname=rancher.10.20.0.68.xip.io --set replicas=1 --version 2.4.5
 ```
 
 ## 參考來源
