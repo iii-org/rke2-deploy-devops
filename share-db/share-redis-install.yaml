@@ -1,0 +1,7 @@
+global:
+  storageClass: 
+  redis:
+    password: IIIdevops123!
+usePassword: true
+cluster:
+  enabled: false

@@ -1,0 +1,10 @@
+replication:
+  enabled: false
+postgresqlPostgresPassword: IIIdevops123!
+postgresqlUsername: iiidevops
+postgresqlPassword: IIIdevops123!
+postgresqlDatabase: opt
+persistence:
+  enabled: true
+  storageClass: iiidevops-nfs-storage
+  size: 8Gi

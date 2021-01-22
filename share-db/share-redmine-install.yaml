@@ -1,0 +1,23 @@
+redmineUsername: iiidevops
+redminePassword: IIIdevops123!
+mailReceiver:
+  enabled: false
+volumePermissions:
+  enabled: false
+mariadb:
+  enabled: false
+databaseType: "postgresql"
+externalDatabase:
+  host: share-postgresql
+  name: redmine
+  user: iiidevops
+  password: IIIdevops123!
+  port: 5432
+replicas: 1
+ingress:
+  hostname: redmine.10.20.0.67.xip.io
+  tls: true
+persistence:
+  enabled: true
+  storageClass: "iiidevops-nfs-storage"
+  size: 8Gi
