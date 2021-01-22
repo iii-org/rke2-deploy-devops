@@ -1,0 +1,96 @@
+global:
+  edition: ce
+  hosts:
+    domain: 10.20.0.67.xip.io
+    https: true
+    gitlab:
+      name: gitlab.10.20.0.67.xip.io
+      https: true
+  ## doc/charts/globals.md#configure-ingress-settings
+  ingress:
+    class: nginx
+    configureCertmanager: false
+    annotations: {}
+    enabled: true
+    tls: 
+       enabled: true
+       secretName: gitalb-tls
+  initialRootPassword:
+    secret: RELEASE-gitlab-initial-root-password
+    key: IIIdevops123!
+  ## doc/charts/globals.md#configure-postgresql-settings
+  psql:
+    password:
+      secret: share-postgresql
+      key: postgresql-password
+    host: share-postgresql
+    port: 5432
+    username: iiidevops
+    database: gitlab
+  redis:
+    password:
+      enabled: true
+      secret: share-redis
+      key: redis-password
+    host: share-redis-master
+    port: 6379
+  pages:
+    enabled: false
+  ## Rails generic setting, applicable to all Rails-based containers
+  ## 暫時
+  rails:
+    bootsnap:
+      enabled: false
+  ## doc/charts/globals.md#configure-gitaly-settings
+  gitaly:
+    enabled: true
+  ## 必須啟動服務
+  ## doc/charts/globals.md#configure-minio-settings
+  minio:
+    enabled: true
+  ## doc/charts/globals.md#configure-appconfig-settings
+  ## Rails based portions of this chart share many settings
+  appConfig:
+    ## doc/charts/globals.md#general-application-settings
+    enableUsagePing: false
+    enableSeatLink: false
+    defaultCanCreateGroup: false
+    defaultProjectsFeatures:
+      issues: false
+      mergeRequests: true
+      wiki: false
+      snippets: false
+      builds: false
+    artifacts:
+      enabled: false
+upgradeCheck:
+  enabled: false
+# 節省CPU資源
+prometheus:
+  install: false
+# 必須元件
+redis:
+  install: true
+# 節省CPU資源
+gitlab-runner:
+  install: false
+# 自簽所以不須cert-manager
+certmanager:
+  install: false
+registry:
+  enabled: false
+# 採用ingress addon(rancher或是其他內建的都OK)
+nginx-ingress:
+  enabled: false
+postgresql:
+  install: false
+gitlab:
+  webservice:
+    minReplicas: 1
+    maxReplicas: 1
+  sidekiq:
+    minReplicas: 1
+    maxReplicas: 1
+  gitlab-shell:
+    minReplicas: 1
+    maxReplicas: 1
