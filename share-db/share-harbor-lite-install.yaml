@@ -11,9 +11,9 @@ expose:
       secretName: "harbor-tls"
   ingress:
     hosts:
-      core: harbor.10.20.0.67.xip.io
+      core: harbor.10.20.0.68.xip.io
     controller: default
-externalURL: https://harbor.10.20.0.67.xip.io
+externalURL: https://harbor.10.20.0.68.xip.io
 
 internalTLS:
   enabled: true
