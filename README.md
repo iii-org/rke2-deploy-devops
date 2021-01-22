@@ -38,6 +38,12 @@ systemctl restart nfs-kernel-server
 showmount -e 10.20.0.68
 ```
 
+## Install cert-manager as Share Service
+```
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4
+```
+
 ## 參考來源
 * [rke2](https://github.com/rancher/rke2)
 * [iii-org/devops-lite-test](https://github.com/iii-org/devops-lite-test)
