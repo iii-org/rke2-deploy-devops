@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: sonarqube-ing
+  namespace: devops
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  rules:
+  - host: "sonar.10.20.0.67.xip.io"
+    http:
+      paths:
+      - backend:
+          serviceName: sonarqube-server-service
+          servicePort: 9000
+        path: "/"
+        pathType: "ImplementationSpecific"
