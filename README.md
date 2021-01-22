@@ -15,9 +15,9 @@ kubectl get nodes
 snap install helm --classic
 export PATH=$PATH:/snap/bin
 # cert-manager
-microk8s.helm3 repo add jetstack https://charts.jetstack.io
+helm repo add jetstack https://charts.jetstack.io
 # rancher
-microk8s.helm3 repo add rancher-stable https://releases.rancher.com/server-charts/stable
+helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 # bitnami(這裡使用redmine)
 helm repo add bitnami https://charts.bitnami.com/bitnami
 # harbor
