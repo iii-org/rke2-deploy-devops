@@ -1,16 +1,15 @@
 global:
   edition: ce
   hosts:
-    domain: 10.20.0.67.xip.io
+    domain: 10.20.0.68.xip.io
     https: true
     gitlab:
-      name: gitlab.10.20.0.67.xip.io
+      name: gitlab.10.20.0.68.xip.io
       https: true
   ## doc/charts/globals.md#configure-ingress-settings
   ingress:
     class: nginx
     configureCertmanager: false
-    annotations: {}
     enabled: true
     tls: 
        enabled: true
@@ -21,18 +20,18 @@ global:
   ## doc/charts/globals.md#configure-postgresql-settings
   psql:
     password:
-      secret: share-postgresql
+      secret: db-postgresql
       key: postgresql-password
-    host: share-postgresql
+    host: db-postgresql-headless
     port: 5432
     username: iiidevops
     database: gitlab
   redis:
     password:
       enabled: true
-      secret: share-redis
+      secret: redis
       key: redis-password
-    host: share-redis-master
+    host: redis-headless
     port: 6379
   pages:
     enabled: false
@@ -68,9 +67,10 @@ upgradeCheck:
 # 節省CPU資源
 prometheus:
   install: false
-# 必須元件
+# 必須元件(採用共享)
+# https://docs.gitlab.com/charts/advanced/external-redis/index.html
 redis:
-  install: true
+  install: false
 # 節省CPU資源
 gitlab-runner:
   install: false

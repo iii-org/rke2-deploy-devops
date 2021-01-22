@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab
+  namespace: devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+      - name: gitlab
+        image: gitlab/gitlab-ce:12.10.6-ce.0
+        env:
+        - name: GITLAB_OMNIBUS_CONFIG
+          value: "external_url 'http://gitlab.10.20.0.68'; gitlab_rails['initial_root_password'] = 'IIIdevops123!';gitlab_rails['gitlab_default_projects_features_builds'] = 'false'"
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
+        - name: gitlab-log-storage
+          mountPath: /var/log/gitlab
+        - name: gitlab-opt-storage
+          mountPath: /var/opt/gitlab
+        - name: gitlab-etc-storage
+          mountPath: /etc/gitlab
+      volumes:
+      - name: gitlab-log-storage
+        persistentVolumeClaim:
+          claimName: gitlab-log
+      - name: gitlab-opt-storage
+        persistentVolumeClaim:
+          claimName: gitlab-opt
+      - name: gitlab-etc-storage
+        persistentVolumeClaim:
+          claimName: gitlab-etc

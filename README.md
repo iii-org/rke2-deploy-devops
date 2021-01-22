@@ -31,6 +31,8 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add harbor https://helm.goharbor.io
 # adminer
 helm repo add cetic https://cetic.github.io/helm-charts
+# gitlab
+helm repo add gitlab https://charts.gitlab.io/
 ```
 
 ## (選擇性, 可選擇任何的公私有雲的儲存空間) Install NFS and storageclass for iiidevops
