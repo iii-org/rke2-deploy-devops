@@ -18,7 +18,7 @@ spec:
         image: gitlab/gitlab-ce:12.10.6-ce.0
         env:
         - name: GITLAB_OMNIBUS_CONFIG
-          value: "external_url 'http://gitlab.10.20.0.68'; gitlab_rails['initial_root_password'] = 'IIIdevops123!';gitlab_rails['gitlab_default_projects_features_builds'] = 'false'"
+          value: "external_url 'http://gitlab.10.20.0.68.xip.io'; gitlab_rails['initial_root_password'] = 'IIIdevops123!';gitlab_rails['gitlab_default_projects_features_builds'] = 'false'"
         ports:
         - containerPort: 80
           name: http

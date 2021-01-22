@@ -5,7 +5,7 @@ metadata:
   name: gitlab-ing
   namespace: devops
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
   rules:
   - host: "gitlab.10.20.0.68.xip.io"
