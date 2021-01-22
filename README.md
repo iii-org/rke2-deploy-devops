@@ -13,6 +13,7 @@ kubectl get nodes
 ## Install helm and list
 ```sh
 snap install helm --classic
+export PATH=$PATH:/snap/bin
 # cert-manager
 microk8s.helm3 repo add jetstack https://charts.jetstack.io
 # rancher
