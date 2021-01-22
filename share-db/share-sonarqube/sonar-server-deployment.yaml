@@ -26,4 +26,4 @@ spec:
         - name: sonar.jdbc.password
           value: IIIdevops123!
         - name: sonar.jdbc.url
-          value: jdbc:postgresql://share-postgresql:5432/sonarqube
+          value: jdbc:postgresql://db-postgresql-headless:5432/sonarqube

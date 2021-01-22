@@ -11,13 +11,16 @@ helm install -n devops db-gui cetic/adminer
 ## 建立資料庫
 harbor: `clair`與`registry`
 redmine: `redmine`
+sonarqube: `sonarqube`
 
 ## 安裝harbor、sonarqube、redmine
 ```sh
 helm install -n devops devops-harbor harbor/harbor -f ./share-harbor-lite-install.yaml
 helm install -n devops devops-redmine bitnami/redmine -f ./share-redmine-install.yaml
+kubectl apply -f ./share-sonarqube/sonar-server-deployment.yaml
+kubectl apply -f ./share-sonarqube/sonar-server-service.yaml
+kubectl apply -f ./share-sonarqube/sonar-server-ingress.yaml
 ```
-
 
 ## 資料庫連線
 host: `db-postgresql-headless`  
