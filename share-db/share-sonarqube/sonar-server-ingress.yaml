@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-  - host: "sonar.10.20.0.67.xip.io"
+  - host: "sonar.10.20.0.68.xip.io"
     http:
       paths:
       - backend:
