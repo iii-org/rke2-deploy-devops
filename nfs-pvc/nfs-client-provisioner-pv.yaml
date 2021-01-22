@@ -25,11 +25,11 @@ spec:
             - name: PROVISIONER_NAME
               value: iiidevops-nfs-provisioner
             - name: NFS_SERVER
-              value: 10.20.0.67
+              value: 10.20.0.68
             - name: NFS_PATH
-              value: /iiidevopsNFS/pvc
+              value: /var/iiidevopsNFS
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 10.20.0.67
-            path: /iiidevopsNFS/pvc
+            server: 10.20.0.68
+            path: /var/iiidevopsNFS
