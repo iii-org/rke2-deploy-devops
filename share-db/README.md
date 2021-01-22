@@ -8,7 +8,17 @@ helm install -n devops share-redis bitnami/redis -f ./share-redis-install.yaml
 helm install -n devops db-gui cetic/adminer
 ```
 
+## 建立資料庫
+harbor: `clair`與`registry`
+
+
 ## 安裝harbor、sonarqube、redmine
 ```sh
-
+helm install -n devops devops-harbor harbor/harbor -f ./share-harbor-lite-install.yaml
 ```
+
+
+## 資料庫連線
+host: `db-postgresql-headless`  
+user: `iiidevops`  
+pass: `IIIdevops123!`  
