@@ -1,0 +1,7 @@
+global:
+  storageClass: "iiidevops-nfs-storage"
+  redis:
+    password: IIIdevops123!
+usePassword: true
+cluster:
+  enabled: false
