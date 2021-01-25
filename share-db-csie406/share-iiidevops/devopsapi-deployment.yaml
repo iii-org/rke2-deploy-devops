@@ -1,0 +1,99 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 , Ref - devops-system/_environments.json
+kind: Deployment
+metadata:
+  name: devopsapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devopsapi
+  template:
+    metadata:
+      labels:
+        app: devopsapi
+    spec:
+      containers:
+      - name: devopsapi
+        image: iiiorg/devops-api:{{iiidevops_ver}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 10009
+        env:
+        - name: SQLALCHEMY_DATABASE_URI
+          value: "postgresql://iiidevops:IIIdevops123!@db-postgresql-headless:5432/devopsdb"
+        - name: SQLALCHEMY_TRACK_MODIFICATIONS
+          value: "false"
+        - name: JWT_SECRET_KEY
+          value: "UnOXSeBQPndQIwQI9wDbear6"
+        - name: WTF_CSRF_CHECK_DEFAULT
+          value: "false"
+        - name: JSON_AS_ASCII
+          value: "false"
+        - name: REDMINE_INTERNAL_BASE_URL
+          value: "http://devops1-redmine:3000"
+        - name: REDMINE_EXTERNAL_BASE_URL
+          value: "http://redmine.10.20.0.68.xip.io"
+        - name: REDMINE_ADMIN_ACCOUNT
+          value: "iiidevops"
+        - name: REDMINE_ADMIN_PASSWORD
+          value: "IIIdevops123!"
+        - name: REDMINE_API_KEY
+          value: "{{redmine_api_key}}"
+        - name: GITLAB_BASE_URL
+          value: "http://gitlab-service:80"
+        - name: GITLAB_ADMIN_ACCOUNT
+          value: "root"
+        - name: GITLAB_ADMIN_PASSWORD
+          value: "{{gitlab_root_passwd}}"
+        - name: GITLAB_PRIVATE_TOKEN
+          value: "{{gitlab_private_token}}"
+        - name: RANCHER_IP_PORT
+          value: "{{rancher_ip}}:3443"
+        - name: RANCHER_ADMIN_ACCOUNT
+          value: "admin"
+        - name: RANCHER_ADMIN_PASSWORD
+          value: "{{rancher_admin_password}}"
+        - name: RANCHER_CLUSTER_NAME
+          value: "iiidevops-k8s"
+        - name: CHECKMARX_ORIGIN
+          value: "{{checkmarx_origin}}"
+        - name: CHECKMARX_USERNAME
+          value: "{{checkmarx_username}}"
+        - name: CHECKMARX_PASSWORD
+          value: "{{checkmarx_password}}"
+        - name: CHECKMARX_SECRET
+          value: "{{checkmarx_secret}}"
+        - name: SONARQUBE_INTERNAL_BASE_URL
+          value: "http://sonarqube-server-service:9000/api"
+        - name: SONARQUBE_EXTERNAL_BASE_URL
+          value: "{{sonarqube_domain_name}}"
+        - name: SONARQUBE_ADMIN_TOKEN
+          value: "{{sonarqube_admin_token}}"
+        - name: HARBOR_INTERNAL_BASE_URL
+          value: "https://devops-harbor-harbor-core:443/api/v2.0"
+        - name: HARBOR_EXTERNAL_BASE_URL
+          value: "https://harbor.10.20.0.68.xip.io"
+        - name: HARBOR_ACCOUNT
+          value: "admin"
+        - name: HARBOR_PASSWORD
+          value: "IIIdevops123!"
+        - name: WEBINSPECT_BASE_URL
+          value: ""
+        - name: ADMIN_INIT_LOGIN
+          value: "admin"
+        - name: ADMIN_INIT_EMAIL
+          value: "iiidevops@iiidevops.org"
+        - name: ADMIN_INIT_PASSWORD
+          value: "IIIdevops123!"
+        volumeMounts:
+        - name: kube-config
+          mountPath: /root/.kube
+        - name: iii-logs
+          mountPath: /usr/src/app/logs
+      volumes:
+      - name: kube-config
+        persistentVolumeClaim:
+          claimName: kube-config		  
+      - name: iii-logs
+        persistentVolumeClaim:
+          claimName: iii-logs
