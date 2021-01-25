@@ -1,0 +1,17 @@
+# Source: db/templates/ingressdbgui.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: devopsui-ing
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+spec:
+  rules:
+  - host: "devops.10.20.0.68.xip.io"
+    http:
+      paths:
+      - backend:
+          serviceName: devopsui-service
+          servicePort: 80
+        path: "/"
+        pathType: "ImplementationSpecific"
