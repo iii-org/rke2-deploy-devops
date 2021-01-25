@@ -38,15 +38,15 @@ spec:
         - name: REDMINE_ADMIN_PASSWORD
           value: "IIIdevops123!"
         - name: REDMINE_API_KEY
-          value: "{{redmine_api_key}}"
+          value: "4d2b9a79f092918e1688d4d6ee46f3e08df234bf"
         - name: GITLAB_BASE_URL
-          value: "http://gitlab-service:80"
+          value: "http://gitlab.10.20.0.68.xip.io"
         - name: GITLAB_ADMIN_ACCOUNT
           value: "root"
         - name: GITLAB_ADMIN_PASSWORD
-          value: "{{gitlab_root_passwd}}"
+          value: "IIIdevops123!"
         - name: GITLAB_PRIVATE_TOKEN
-          value: "{{gitlab_private_token}}"
+          value: "xCbMSoiury2bmWoXhNzN"
         - name: RANCHER_IP_PORT
           value: "{{rancher_ip}}:3443"
         - name: RANCHER_ADMIN_ACCOUNT
