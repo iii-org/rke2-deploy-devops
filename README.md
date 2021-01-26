@@ -3,13 +3,20 @@
 ## 警告: /etc/hosts內一定要有Node的IP!!和rke2雖然是rancher的, 但是由於下方安裝的rancher版本老舊因此在rancherUI會無法識別為rke2 goverment, 在後續的版本可讀出為rke goverment
 sonarqube: 修改nano /etc/sysctl.conf至需求大小 vm.max_map_count=262144
 
+## ADD ENV
+```sh
+nano /etc/profile
+export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
+export PATH=$PATH:/snap/bin
+
+```
+
 ## Install rke2
 ```sh
 curl -sfL https://get.rke2.io | sh -
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
 # Wait a bit
-export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
 kubectl get nodes
 # for k8s self-cert or http01 dns method
 kubectl create ns cert-manager
@@ -20,7 +27,6 @@ kubectl create ns devops
 ## Install helm and list
 ```sh
 snap install helm --classic
-export PATH=$PATH:/snap/bin
 # cert-manager
 helm repo add jetstack https://charts.jetstack.io
 # rancher
