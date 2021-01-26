@@ -5,9 +5,11 @@ sonarqube: 修改nano /etc/sysctl.conf至需求大小 vm.max_map_count=262144
 
 ## ADD ENV
 ```sh
-nano /etc/profile
-export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
-export PATH=$PATH:/snap/bin
+nano /etc/environment
+append->:/var/lib/rancher/rke2/bin:/snap/bin
+
+#export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
+#export PATH=$PATH:/snap/bin
 
 ```
 
