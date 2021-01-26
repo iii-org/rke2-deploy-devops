@@ -16,7 +16,7 @@ spec:
       containers:
       - name: devopsapi
         image: iiiorg/devops-api:develop
-        #imagePullPolicy: Always
+        imagePullPolicy: Always
         ports:
         - containerPort: 10009
         env:
