@@ -45,8 +45,10 @@ global:
     enabled: true
   ## 必須啟動服務
   ## doc/charts/globals.md#configure-minio-settings
+  ## 關閉Minio說明
+  ## https://docs.gitlab.com/charts/advanced/external-object-storage/
   minio:
-    enabled: true
+    enabled: false
   ## doc/charts/globals.md#configure-appconfig-settings
   ## Rails based portions of this chart share many settings
   appConfig:
@@ -62,6 +64,11 @@ global:
       builds: false
     artifacts:
       enabled: false
+    object_store:
+      enabled: true
+      connection:
+        secret: gitlab-rails-storage
+    
 upgradeCheck:
   enabled: false
 # 節省CPU資源
