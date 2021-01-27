@@ -1,9 +1,13 @@
+# 是否要部屬多個來增加負載容量
 replication:
   enabled: false
+# 資料庫管理密碼
 postgresqlPostgresPassword: IIIdevops123!
+# 資料庫建立使用者帳號
 postgresqlUsername: iiidevops
+# 資料庫建立使用者密碼
 postgresqlPassword: IIIdevops123!
-postgresqlDatabase: opt
+postgresqlDatabase: devopsdb
 persistence:
   enabled: true
   storageClass: iiidevops-nfs-storage

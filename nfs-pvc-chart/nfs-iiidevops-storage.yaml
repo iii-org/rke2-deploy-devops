@@ -1,0 +1,17 @@
+replicaCount: 2
+strategyType: Recreate
+storageClass:
+  name: iiidevops-nfs-storage
+  defaultClass: true
+  allowVolumeExpansion: true
+  reclaimPolicy: Delete
+  archiveOnDelete: true
+  accessModes: ReadWriteOnce
+nfs:
+  server: "120.105.128.219"
+  path: "/iiidevopsNFS"
+  #mountOptions: "nfsvers=3"
+rbac:
+  create: true
+serviceAccount:
+  create: true
