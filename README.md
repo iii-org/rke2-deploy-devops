@@ -27,23 +27,6 @@ kubectl create ns cert-manager
 kubectl create ns devops
 ```
 
-## Install helm and list
-```sh
-snap install helm --classic
-# cert-manager
-helm repo add jetstack https://charts.jetstack.io
-# rancher
-helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
-# bitnami(這裡使用redmine)
-helm repo add bitnami https://charts.bitnami.com/bitnami
-# harbor
-helm repo add harbor https://helm.goharbor.io
-# adminer
-helm repo add cetic https://cetic.github.io/helm-charts
-# gitlab
-helm repo add gitlab https://charts.gitlab.io/
-```
-
 ## (選擇性, 可選擇任何的公私有雲的儲存空間) Install NFS and storageclass for iiidevops
 ```sh
 apt install nfs-kernel-server -y
